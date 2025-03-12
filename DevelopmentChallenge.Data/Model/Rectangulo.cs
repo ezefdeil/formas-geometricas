@@ -1,28 +1,30 @@
 ﻿using DevelopmentChallenge.Data.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace DevelopmentChallenge.Data.Model
 {
-    public class Cuadrado : IFormaGeometrica
+    public class Rectangulo : IFormaGeometrica
     {
-        private readonly decimal _lado;
+        private readonly decimal _ancho;
+        private readonly decimal _alto;
 
-        public Cuadrado(decimal ancho)
+        public Rectangulo(decimal ancho, decimal alto)
         {
-            _lado = ancho;
+            _ancho = ancho;
+            _alto = alto;
         }
 
         public decimal CalcularArea()
         {
-            return _lado * _lado;
+            return _ancho * _alto;
         }
 
         public decimal CalcularPerimetro()
         {
-            return _lado * 4;
+            return 2 * (_ancho + _alto);
         }
     }
+
 }

@@ -97,6 +97,42 @@ namespace DevelopmentChallenge.Services.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rectángulo.
+        /// </summary>
+        internal static string Forma_Rectangulo {
+            get {
+                return ResourceManager.GetString("Forma-Rectangulo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rectángulos.
+        /// </summary>
+        internal static string Forma_Rectangulo_Plural {
+            get {
+                return ResourceManager.GetString("Forma-Rectangulo-Plural", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trapecio.
+        /// </summary>
+        internal static string Forma_TrapecioIsosceles {
+            get {
+                return ResourceManager.GetString("Forma-TrapecioIsosceles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trapecios.
+        /// </summary>
+        internal static string Forma_TrapecioIsosceles_Plural {
+            get {
+                return ResourceManager.GetString("Forma-TrapecioIsosceles-Plural", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Triángulo.
         /// </summary>
         internal static string Forma_TrianguloEquilatero {

@@ -153,4 +153,16 @@
   <data name="Forma-TrianguloEquilatero-Plural" xml:space="preserve">
     <value>Triángulos</value>
   </data>
+  <data name="Forma-Rectangulo" xml:space="preserve">
+    <value>Rectángulo</value>
+  </data>
+  <data name="Forma-Rectangulo-Plural" xml:space="preserve">
+    <value>Rectángulos</value>
+  </data>
+  <data name="Forma-TrapecioIsosceles" xml:space="preserve">
+    <value>Trapecio</value>
+  </data>
+  <data name="Forma-TrapecioIsosceles-Plural" xml:space="preserve">
+    <value>Trapecios</value>
+  </data>
 </root>

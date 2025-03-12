@@ -121,48 +121,48 @@
     <value>Area</value>
   </data>
   <data name="Forma-Circulo" xml:space="preserve">
-    <value>Circle</value>
+    <value>Cerchio</value>
   </data>
   <data name="Forma-Circulo-Plural" xml:space="preserve">
-    <value>Circles</value>
+    <value>Cerchi</value>
   </data>
   <data name="Forma-Cuadrado" xml:space="preserve">
-    <value>Square</value>
+    <value>Quadrato</value>
   </data>
   <data name="General-formas" xml:space="preserve">
-    <value>shapes</value>
+    <value>forme</value>
   </data>
   <data name="General-ListaVacia" xml:space="preserve">
-    <value>Empty list of shapes!</value>
+    <value>Elenco vuoto di forme!</value>
   </data>
   <data name="General-Perimetro" xml:space="preserve">
-    <value>Perimeter</value>
+    <value>Perimetro</value>
   </data>
   <data name="General-Titulo" xml:space="preserve">
-    <value>Shapes report</value>
+    <value>Rapporto delle Forme</value>
   </data>
   <data name="General-TOTAL" xml:space="preserve">
-    <value>TOTAL</value>
+    <value>TOTALE</value>
   </data>
   <data name="Forma-Cuadrado-Plural" xml:space="preserve">
-    <value>Squares</value>
+    <value>Quadrati</value>
   </data>
   <data name="Forma-TrianguloEquilatero" xml:space="preserve">
-    <value>Triangle</value>
+    <value>Triangolo</value>
   </data>
   <data name="Forma-TrianguloEquilatero-Plural" xml:space="preserve">
-    <value>Triangles</value>
+    <value>Triangoli</value>
   </data>
   <data name="Forma-Rectangulo" xml:space="preserve">
-    <value>Rectangle</value>
+    <value>Rettangolo</value>
   </data>
   <data name="Forma-Rectangulo-Plural" xml:space="preserve">
-    <value>Rectangles</value>
+    <value>Rettangoli</value>
   </data>
   <data name="Forma-TrapecioIsosceles" xml:space="preserve">
-    <value>Trapeze</value>
+    <value>Trapezio</value>
   </data>
   <data name="Forma-TrapecioIsosceles-Plural" xml:space="preserve">
-    <value>Trapezoids</value>
+    <value>Trapezi</value>
   </data>
 </root>

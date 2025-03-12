@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IFormaGeometrica.cs" />
+    <Compile Include="Model\Rectangulo.cs" />
+    <Compile Include="Model\TrapecioIsosceles.cs" />
     <Compile Include="Model\TrianguloEquilatero.cs" />
     <Compile Include="Model\Circulo.cs" />
     <Compile Include="Model\Cuadrado.cs" />
