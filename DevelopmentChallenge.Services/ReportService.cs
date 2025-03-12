@@ -23,22 +23,15 @@ namespace DevelopmentChallenge.Services
 
         #endregion
 
-        #region Idiomas
-
-        public const int Castellano = 1;
-        public const int Ingles = 2;
-        #endregion
+      
+        private const string _resourcesBaseName = "DevelopmentChallenge.Services.Properties.Resources";
 
         private readonly ResourceManager _resourceManager;
         private readonly CultureInfo _cultureInfo;
         /// <summary>
         /// Inicializa un <see cref="ReportService"/> con el idioma por defecto
         /// </summary>
-        public ReportService()
-        {
-            _cultureInfo = CultureInfo.InvariantCulture;
-            _resourceManager = new ResourceManager("DevelopmentChallenge.Services.Properties.Resources", typeof(ReportService).Assembly);
-        }
+        public ReportService() : this(string.Empty) { }
 
 
         /// <summary>
@@ -50,17 +43,24 @@ namespace DevelopmentChallenge.Services
         /// </param>
         public ReportService(string idioma)
         {
-            try
+            if (string.IsNullOrWhiteSpace(idioma))
             {
-                _cultureInfo = CultureInfo.GetCultureInfo(idioma);
-            }
-            catch (CultureNotFoundException)
-            {
-                Console.WriteLine("Idioma no soportado, se utilizara el idioma por defecto.");
                 _cultureInfo = CultureInfo.InvariantCulture;
             }
+            else
+            {
+                try
+                {
+                    _cultureInfo = CultureInfo.GetCultureInfo(idioma);
+                }
+                catch (CultureNotFoundException)
+                {
+                    Console.WriteLine("Idioma no soportado, se utilizara el idioma por defecto.");
+                    _cultureInfo = CultureInfo.InvariantCulture;
+                }
+            }
 
-            _resourceManager = new ResourceManager("DevelopmentChallenge.Services.Properties.Resources", typeof(ReportService).Assembly);
+            _resourceManager = new ResourceManager(_resourcesBaseName, typeof(ReportService).Assembly);
 
         }
 
