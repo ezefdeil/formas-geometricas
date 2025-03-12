@@ -120,8 +120,8 @@ namespace DevelopmentChallenge.Services
                 // FOOTER
                 sb.Append($"{_resourceManager.GetString("General-TOTAL", _cultureInfo)}:<br/>");
                 sb.Append(numeroCuadrados + numeroCirculos + numeroTriangulos + " " + _resourceManager.GetString("General-formas", _cultureInfo) + " ");
-                sb.Append($"{_resourceManager.GetString("General-Perimetro", _cultureInfo)} {(perimetroCuadrados + perimetroTriangulos + perimetroCirculos).ToString("#.##")} ");
-                sb.Append($"{_resourceManager.GetString("General-Area", _cultureInfo)} {(areaCuadrados + areaCirculos + areaTriangulos).ToString("#.##")}");
+                sb.Append($"{_resourceManager.GetString("General-Perimetro", _cultureInfo)} {(perimetroCuadrados + perimetroTriangulos + perimetroCirculos).ToString("#.##", _cultureInfo)} ");
+                sb.Append($"{_resourceManager.GetString("General-Area", _cultureInfo)} {(areaCuadrados + areaCirculos + areaTriangulos).ToString("#.##", _cultureInfo)}");
             }
 
             return sb.ToString();
@@ -131,7 +131,7 @@ namespace DevelopmentChallenge.Services
         {
             if (cantidad > 0)
             {
-                return $"{cantidad} {TraducirForma(tipo, cantidad)} | {_resourceManager.GetString("General-Area", _cultureInfo)} {area:#.##} | {_resourceManager.GetString("General-Perimetro", _cultureInfo)} {perimetro:#.##} <br/>";
+                return $"{cantidad} {TraducirForma(tipo, cantidad)} | {_resourceManager.GetString("General-Area", _cultureInfo)} {$"{area.ToString("#.##", _cultureInfo)}"} | {_resourceManager.GetString("General-Perimetro", _cultureInfo)} {$"{perimetro.ToString("#.##", _cultureInfo)}"} <br/>";
             }
 
             return string.Empty;
@@ -142,7 +142,7 @@ namespace DevelopmentChallenge.Services
             switch (tipo)
             {
                 case CuadradoType:
-                    return cantidad == 1 ? _resourceManager.GetString("Forma-Cuadrado", _cultureInfo) : _resourceManager.GetString("Forma-Cuadrados", _cultureInfo);                    
+                    return cantidad == 1 ? _resourceManager.GetString("Forma-Cuadrado", _cultureInfo) : _resourceManager.GetString("Forma-Cuadrados", _cultureInfo);
                 case Circulo:
                     return cantidad == 1 ? _resourceManager.GetString("Forma-Circulo", _cultureInfo) : _resourceManager.GetString("Forma-Circulos", _cultureInfo);
                 case TrianguloEquilatero:
