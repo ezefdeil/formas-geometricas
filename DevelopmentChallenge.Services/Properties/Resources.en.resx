@@ -117,40 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Key-Area" xml:space="preserve">
+  <data name="General-Area" xml:space="preserve">
     <value>Area</value>
   </data>
-  <data name="Key-Circulo" xml:space="preserve">
+  <data name="Forma-Circulo" xml:space="preserve">
     <value>Circle</value>
   </data>
-  <data name="Key-Circulos" xml:space="preserve">
+  <data name="Forma-Circulos" xml:space="preserve">
     <value>Circles</value>
   </data>
-  <data name="Key-Cuadrado" xml:space="preserve">
+  <data name="Forma-Cuadrado" xml:space="preserve">
     <value>Square</value>
   </data>
-  <data name="Key-Cuadrados" xml:space="preserve">
+  <data name="Forma-Cuadrados" xml:space="preserve">
     <value>Squares</value>
   </data>
-  <data name="Key-formas" xml:space="preserve">
+  <data name="General-formas" xml:space="preserve">
     <value>shapes</value>
   </data>
-  <data name="Key-ListaVacia" xml:space="preserve">
+  <data name="General-ListaVacia" xml:space="preserve">
     <value>Empty list of shapes!</value>
   </data>
-  <data name="Key-Perimetro" xml:space="preserve">
+  <data name="General-Perimetro" xml:space="preserve">
     <value>Perimeter</value>
   </data>
-  <data name="Key-Titulo" xml:space="preserve">
+  <data name="General-Titulo" xml:space="preserve">
     <value>Shapes report</value>
   </data>
-  <data name="Key-TOTAL" xml:space="preserve">
+  <data name="General-TOTAL" xml:space="preserve">
     <value>TOTAL</value>
   </data>
-  <data name="Key-Triangulo" xml:space="preserve">
+  <data name="Forma-Triangulo" xml:space="preserve">
     <value>Triangle</value>
   </data>
-  <data name="Key-Triangulos" xml:space="preserve">
+  <data name="Forma-Triangulos" xml:space="preserve">
     <value>Triangles</value>
   </data>
 </root>
