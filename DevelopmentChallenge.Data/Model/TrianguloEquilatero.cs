@@ -17,12 +17,12 @@ namespace DevelopmentChallenge.Data.Model
 
         public decimal CalcularArea()
         {
-            throw new NotImplementedException();
+            return ((decimal)Math.Sqrt(3) / 4) * _lado * _lado;
         }
 
         public decimal CalcularPerimetro()
         {
-            throw new NotImplementedException();
+            return _lado * 3;
         }
     }
 }
