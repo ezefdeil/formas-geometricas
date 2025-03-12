@@ -12,18 +12,6 @@ namespace DevelopmentChallenge.Services
 {
     public class ReportService
     {
-
-
-        #region Formas
-
-        public const int CuadradoType = 1;
-        public const int TrianguloEquilatero = 2;
-        public const int Circulo = 3;
-        public const int Trapecio = 4;
-
-        #endregion
-
-      
         private const string _resourcesBaseName = "DevelopmentChallenge.Services.Properties.Resources";
 
         private readonly ResourceManager _resourceManager;
@@ -79,77 +67,42 @@ namespace DevelopmentChallenge.Services
                 sb.Append($"<h1>{_resourceManager.GetString("General-Titulo", _cultureInfo)}</h1>");
 
 
-                var numeroCuadrados = 0;
-                var numeroCirculos = 0;
-                var numeroTriangulos = 0;
+                var areaByTipoForma = new Dictionary<Type, decimal>();
+                var perimetroByTipoForma = new Dictionary<Type, decimal>();
 
-                var areaCuadrados = 0m;
-                var areaCirculos = 0m;
-                var areaTriangulos = 0m;
-
-                var perimetroCuadrados = 0m;
-                var perimetroCirculos = 0m;
-                var perimetroTriangulos = 0m;
-
-                for (var i = 0; i < formas.Count; i++)
+                foreach (var formaGroup in formas.GroupBy(x => x.GetType()))
                 {
-                    if (formas[i] is Cuadrado)
-                    {
-                        numeroCuadrados++;
-                        areaCuadrados += formas[i].CalcularArea();
-                        perimetroCuadrados += formas[i].CalcularPerimetro();
-                    }
-                    if (formas[i] is Circulo)
-                    {
-                        numeroCirculos++;
-                        areaCirculos += formas[i].CalcularArea();
-                        perimetroCirculos += formas[i].CalcularPerimetro();
-                    }
-                    if (formas[i] is TrianguloEquilatero)
-                    {
-                        numeroTriangulos++;
-                        areaTriangulos += formas[i].CalcularArea();
-                        perimetroTriangulos += formas[i].CalcularPerimetro();
-                    }
-                }
+                    var area = formaGroup.Sum(x => x.CalcularArea());
+                    var perimetro = formaGroup.Sum(x => x.CalcularPerimetro());
 
-                sb.Append(ObtenerLinea(numeroCuadrados, areaCuadrados, perimetroCuadrados, CuadradoType));
-                sb.Append(ObtenerLinea(numeroCirculos, areaCirculos, perimetroCirculos, Circulo));
-                sb.Append(ObtenerLinea(numeroTriangulos, areaTriangulos, perimetroTriangulos, TrianguloEquilatero));
+                    areaByTipoForma.Add(formaGroup.Key, area);
+                    perimetroByTipoForma.Add(formaGroup.Key, perimetro);
+                    sb.Append(ObtenerLinea(formaGroup.Count(), area, perimetro, formaGroup.Key));
+                }
 
                 // FOOTER
                 sb.Append($"{_resourceManager.GetString("General-TOTAL", _cultureInfo)}:<br/>");
-                sb.Append(numeroCuadrados + numeroCirculos + numeroTriangulos + " " + _resourceManager.GetString("General-formas", _cultureInfo) + " ");
-                sb.Append($"{_resourceManager.GetString("General-Perimetro", _cultureInfo)} {(perimetroCuadrados + perimetroTriangulos + perimetroCirculos).ToString("#.##", _cultureInfo)} ");
-                sb.Append($"{_resourceManager.GetString("General-Area", _cultureInfo)} {(areaCuadrados + areaCirculos + areaTriangulos).ToString("#.##", _cultureInfo)}");
+                sb.Append(formas.Count + " " + _resourceManager.GetString("General-formas", _cultureInfo) + " ");
+                sb.Append($"{_resourceManager.GetString("General-Perimetro", _cultureInfo)} {perimetroByTipoForma.Sum(x => x.Value).ToString("#.##", _cultureInfo)} ");
+                sb.Append($"{_resourceManager.GetString("General-Area", _cultureInfo)} {areaByTipoForma.Sum(x => x.Value).ToString("#.##", _cultureInfo)}");
             }
 
             return sb.ToString();
         }
 
-        private string ObtenerLinea(int cantidad, decimal area, decimal perimetro, int tipo)
+        private string ObtenerLinea(int cantidad, decimal area, decimal perimetro, Type tipoForma)
         {
             if (cantidad > 0)
             {
-                return $"{cantidad} {TraducirForma(tipo, cantidad)} | {_resourceManager.GetString("General-Area", _cultureInfo)} {$"{area.ToString("#.##", _cultureInfo)}"} | {_resourceManager.GetString("General-Perimetro", _cultureInfo)} {$"{perimetro.ToString("#.##", _cultureInfo)}"} <br/>";
+                return $"{cantidad} {TraducirForma(tipoForma, cantidad)} | {_resourceManager.GetString("General-Area", _cultureInfo)} {$"{area.ToString("#.##", _cultureInfo)}"} | {_resourceManager.GetString("General-Perimetro", _cultureInfo)} {$"{perimetro.ToString("#.##", _cultureInfo)}"} <br/>";
             }
 
             return string.Empty;
         }
 
-        private string TraducirForma(int tipo, int cantidad)
+        private string TraducirForma(Type tipoForma, int cantidad)
         {
-            switch (tipo)
-            {
-                case CuadradoType:
-                    return cantidad == 1 ? _resourceManager.GetString("Forma-Cuadrado", _cultureInfo) : _resourceManager.GetString("Forma-Cuadrados", _cultureInfo);
-                case Circulo:
-                    return cantidad == 1 ? _resourceManager.GetString("Forma-Circulo", _cultureInfo) : _resourceManager.GetString("Forma-Circulos", _cultureInfo);
-                case TrianguloEquilatero:
-                    return cantidad == 1 ? _resourceManager.GetString("Forma-Triangulo", _cultureInfo) : _resourceManager.GetString("Forma-Triangulos", _cultureInfo);
-            }
-
-            return string.Empty;
+            return cantidad == 1 ? _resourceManager.GetString($"Forma-{tipoForma.Name}", _cultureInfo) : _resourceManager.GetString($"Forma-{tipoForma.Name}-Plural", _cultureInfo);
         }
     }
 }

@@ -123,14 +123,11 @@
   <data name="Forma-Circulo" xml:space="preserve">
     <value>Círculo</value>
   </data>
-  <data name="Forma-Circulos" xml:space="preserve">
+  <data name="Forma-Circulo-Plural" xml:space="preserve">
     <value>Círculos</value>
   </data>
   <data name="Forma-Cuadrado" xml:space="preserve">
     <value>Cuadrado</value>
-  </data>
-  <data name="Forma-Cuadrados" xml:space="preserve">
-    <value>Cuadrados</value>
   </data>
   <data name="General-formas" xml:space="preserve">
     <value>formas</value>
@@ -147,10 +144,13 @@
   <data name="General-TOTAL" xml:space="preserve">
     <value>TOTAL</value>
   </data>
-  <data name="Forma-Triangulo" xml:space="preserve">
+  <data name="Forma-Cuadrado-Plural" xml:space="preserve">
+    <value>Cuadrados</value>
+  </data>
+  <data name="Forma-TrianguloEquilatero" xml:space="preserve">
     <value>Triángulo</value>
   </data>
-  <data name="Forma-Triangulos" xml:space="preserve">
+  <data name="Forma-TrianguloEquilatero-Plural" xml:space="preserve">
     <value>Triángulos</value>
   </data>
 </root>

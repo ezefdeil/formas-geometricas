@@ -72,9 +72,9 @@ namespace DevelopmentChallenge.Services.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Círculos.
         /// </summary>
-        internal static string Forma_Circulos {
+        internal static string Forma_Circulo_Plural {
             get {
-                return ResourceManager.GetString("Forma-Circulos", resourceCulture);
+                return ResourceManager.GetString("Forma-Circulo-Plural", resourceCulture);
             }
         }
         
@@ -90,27 +90,27 @@ namespace DevelopmentChallenge.Services.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cuadrados.
         /// </summary>
-        internal static string Forma_Cuadrados {
+        internal static string Forma_Cuadrado_Plural {
             get {
-                return ResourceManager.GetString("Forma-Cuadrados", resourceCulture);
+                return ResourceManager.GetString("Forma-Cuadrado-Plural", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Triángulo.
         /// </summary>
-        internal static string Forma_Triangulo {
+        internal static string Forma_TrianguloEquilatero {
             get {
-                return ResourceManager.GetString("Forma-Triangulo", resourceCulture);
+                return ResourceManager.GetString("Forma-TrianguloEquilatero", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Triángulos.
         /// </summary>
-        internal static string Forma_Triangulos {
+        internal static string Forma_TrianguloEquilatero_Plural {
             get {
-                return ResourceManager.GetString("Forma-Triangulos", resourceCulture);
+                return ResourceManager.GetString("Forma-TrianguloEquilatero-Plural", resourceCulture);
             }
         }
         
