@@ -64,7 +64,7 @@ namespace DevelopmentChallenge.Services
 
         }
 
-        public string Imprimir(List<IFormaGeometrica> formas, int idioma)
+        public string Imprimir(List<IFormaGeometrica> formas)
         {
             var sb = new StringBuilder();
 
@@ -76,11 +76,8 @@ namespace DevelopmentChallenge.Services
             {
                 // Hay por lo menos una forma
                 // HEADER
-                if (idioma == Castellano)
-                    sb.Append("<h1>Reporte de Formas</h1>");
-                else
-                    // default es inglés
-                    sb.Append("<h1>Shapes report</h1>");
+                sb.Append($"<h1>{_resourceManager.GetString("General-Titulo", _cultureInfo)}</h1>");
+
 
                 var numeroCuadrados = 0;
                 var numeroCirculos = 0;
@@ -116,46 +113,40 @@ namespace DevelopmentChallenge.Services
                     }
                 }
 
-                sb.Append(ObtenerLinea(numeroCuadrados, areaCuadrados, perimetroCuadrados, CuadradoType, idioma));
-                sb.Append(ObtenerLinea(numeroCirculos, areaCirculos, perimetroCirculos, Circulo, idioma));
-                sb.Append(ObtenerLinea(numeroTriangulos, areaTriangulos, perimetroTriangulos, TrianguloEquilatero, idioma));
+                sb.Append(ObtenerLinea(numeroCuadrados, areaCuadrados, perimetroCuadrados, CuadradoType));
+                sb.Append(ObtenerLinea(numeroCirculos, areaCirculos, perimetroCirculos, Circulo));
+                sb.Append(ObtenerLinea(numeroTriangulos, areaTriangulos, perimetroTriangulos, TrianguloEquilatero));
 
                 // FOOTER
-                sb.Append("TOTAL:<br/>");
-                sb.Append(numeroCuadrados + numeroCirculos + numeroTriangulos + " " + (idioma == Castellano ? "formas" : "shapes") + " ");
-                sb.Append((idioma == Castellano ? "Perimetro " : "Perimeter ") + (perimetroCuadrados + perimetroTriangulos + perimetroCirculos).ToString("#.##") + " ");
-                sb.Append("Area " + (areaCuadrados + areaCirculos + areaTriangulos).ToString("#.##"));
+                sb.Append($"{_resourceManager.GetString("General-TOTAL", _cultureInfo)}:<br/>");
+                sb.Append(numeroCuadrados + numeroCirculos + numeroTriangulos + " " + _resourceManager.GetString("General-formas", _cultureInfo) + " ");
+                sb.Append($"{_resourceManager.GetString("General-Perimetro", _cultureInfo)} {(perimetroCuadrados + perimetroTriangulos + perimetroCirculos).ToString("#.##")} ");
+                sb.Append($"{_resourceManager.GetString("General-Area", _cultureInfo)} {(areaCuadrados + areaCirculos + areaTriangulos).ToString("#.##")}");
             }
 
             return sb.ToString();
         }
 
-        private static string ObtenerLinea(int cantidad, decimal area, decimal perimetro, int tipo, int idioma)
+        private string ObtenerLinea(int cantidad, decimal area, decimal perimetro, int tipo)
         {
             if (cantidad > 0)
             {
-                if (idioma == Castellano)
-                    return $"{cantidad} {TraducirForma(tipo, cantidad, idioma)} | Area {area:#.##} | Perimetro {perimetro:#.##} <br/>";
-
-                return $"{cantidad} {TraducirForma(tipo, cantidad, idioma)} | Area {area:#.##} | Perimeter {perimetro:#.##} <br/>";
+                return $"{cantidad} {TraducirForma(tipo, cantidad)} | {_resourceManager.GetString("General-Area", _cultureInfo)} {area:#.##} | {_resourceManager.GetString("General-Perimetro", _cultureInfo)} {perimetro:#.##} <br/>";
             }
 
             return string.Empty;
         }
 
-        private static string TraducirForma(int tipo, int cantidad, int idioma)
+        private string TraducirForma(int tipo, int cantidad)
         {
             switch (tipo)
             {
                 case CuadradoType:
-                    if (idioma == Castellano) return cantidad == 1 ? "Cuadrado" : "Cuadrados";
-                    else return cantidad == 1 ? "Square" : "Squares";
+                    return cantidad == 1 ? _resourceManager.GetString("Forma-Cuadrado", _cultureInfo) : _resourceManager.GetString("Forma-Cuadrados", _cultureInfo);                    
                 case Circulo:
-                    if (idioma == Castellano) return cantidad == 1 ? "Círculo" : "Círculos";
-                    else return cantidad == 1 ? "Circle" : "Circles";
+                    return cantidad == 1 ? _resourceManager.GetString("Forma-Circulo", _cultureInfo) : _resourceManager.GetString("Forma-Circulos", _cultureInfo);
                 case TrianguloEquilatero:
-                    if (idioma == Castellano) return cantidad == 1 ? "Triángulo" : "Triángulos";
-                    else return cantidad == 1 ? "Triangle" : "Triangles";
+                    return cantidad == 1 ? _resourceManager.GetString("Forma-Triangulo", _cultureInfo) : _resourceManager.GetString("Forma-Triangulos", _cultureInfo);
             }
 
             return string.Empty;
