@@ -1,28 +1,18 @@
-﻿/******************************************************************************************************************/
-/******* ¿Qué pasa si debemos soportar un nuevo idioma para los reportes, o agregar más formas geométricas? *******/
-/******************************************************************************************************************/
-
-/*
- * TODO: 
- * Refactorizar la clase para respetar principios de la programación orientada a objetos.
- * Implementar la forma Trapecio/Rectangulo. 
- * Agregar el idioma Italiano (o el deseado) al reporte.
- * Se agradece la inclusión de nuevos tests unitarios para validar el comportamiento de la nueva funcionalidad agregada (los tests deben pasar correctamente al entregar la solución, incluso los actuales.)
- * Una vez finalizado, hay que subir el código a un repo GIT y ofrecernos la URL para que podamos utilizar la nueva versión :).
- */
-
+﻿using DevelopmentChallenge.Data.Interfaces;
+using DevelopmentChallenge.Data.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace DevelopmentChallenge.Data.Classes
+namespace DevelopmentChallenge.Services
 {
-    public class FormaGeometrica
+    public class ReportService
     {
         #region Formas
 
-        public const int Cuadrado = 1;
+        public const int CuadradoType = 1;
         public const int TrianguloEquilatero = 2;
         public const int Circulo = 3;
         public const int Trapecio = 4;
@@ -36,17 +26,7 @@ namespace DevelopmentChallenge.Data.Classes
 
         #endregion
 
-        private readonly decimal _lado;
-
-        public int Tipo { get; set; }
-
-        public FormaGeometrica(int tipo, decimal ancho)
-        {
-            Tipo = tipo;
-            _lado = ancho;
-        }
-
-        public static string Imprimir(List<FormaGeometrica> formas, int idioma)
+        public static string Imprimir(List<IFormaGeometrica> formas, int idioma)
         {
             var sb = new StringBuilder();
 
@@ -81,27 +61,27 @@ namespace DevelopmentChallenge.Data.Classes
 
                 for (var i = 0; i < formas.Count; i++)
                 {
-                    if (formas[i].Tipo == Cuadrado)
+                    if (formas[i] is Cuadrado)
                     {
                         numeroCuadrados++;
                         areaCuadrados += formas[i].CalcularArea();
                         perimetroCuadrados += formas[i].CalcularPerimetro();
                     }
-                    if (formas[i].Tipo == Circulo)
+                    if (formas[i] is Circulo)
                     {
                         numeroCirculos++;
                         areaCirculos += formas[i].CalcularArea();
                         perimetroCirculos += formas[i].CalcularPerimetro();
                     }
-                    if (formas[i].Tipo == TrianguloEquilatero)
+                    if (formas[i] is TrianguloEquilatero)
                     {
                         numeroTriangulos++;
                         areaTriangulos += formas[i].CalcularArea();
                         perimetroTriangulos += formas[i].CalcularPerimetro();
                     }
                 }
-                
-                sb.Append(ObtenerLinea(numeroCuadrados, areaCuadrados, perimetroCuadrados, Cuadrado, idioma));
+
+                sb.Append(ObtenerLinea(numeroCuadrados, areaCuadrados, perimetroCuadrados, CuadradoType, idioma));
                 sb.Append(ObtenerLinea(numeroCirculos, areaCirculos, perimetroCirculos, Circulo, idioma));
                 sb.Append(ObtenerLinea(numeroTriangulos, areaTriangulos, perimetroTriangulos, TrianguloEquilatero, idioma));
 
@@ -132,7 +112,7 @@ namespace DevelopmentChallenge.Data.Classes
         {
             switch (tipo)
             {
-                case Cuadrado:
+                case CuadradoType:
                     if (idioma == Castellano) return cantidad == 1 ? "Cuadrado" : "Cuadrados";
                     else return cantidad == 1 ? "Square" : "Squares";
                 case Circulo:
@@ -144,30 +124,6 @@ namespace DevelopmentChallenge.Data.Classes
             }
 
             return string.Empty;
-        }
-
-        public decimal CalcularArea()
-        {
-            switch (Tipo)
-            {
-                case Cuadrado: return _lado * _lado;
-                case Circulo: return (decimal)Math.PI * (_lado / 2) * (_lado / 2);
-                case TrianguloEquilatero: return ((decimal)Math.Sqrt(3) / 4) * _lado * _lado;
-                default:
-                    throw new ArgumentOutOfRangeException(@"Forma desconocida");
-            }
-        }
-
-        public decimal CalcularPerimetro()
-        {
-            switch (Tipo)
-            {
-                case Cuadrado: return _lado * 4;
-                case Circulo: return (decimal)Math.PI * _lado;
-                case TrianguloEquilatero: return _lado * 3;
-                default:
-                    throw new ArgumentOutOfRangeException(@"Forma desconocida");
-            }
         }
     }
 }

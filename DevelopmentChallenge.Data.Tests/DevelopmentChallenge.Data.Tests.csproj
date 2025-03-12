@@ -62,6 +62,10 @@
       <Project>{b21a8f24-c7e0-4e69-b1d7-b424237dc216}</Project>
       <Name>DevelopmentChallenge.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DevelopmentChallenge.Services\DevelopmentChallenge.Services.csproj">
+      <Project>{C055735A-7870-4613-B3C9-AABB13386F7A}</Project>
+      <Name>DevelopmentChallenge.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
